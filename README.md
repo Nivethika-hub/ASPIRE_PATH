@@ -1,182 +1,99 @@
 # AspirePath - Student Opportunity Discovery Platform
 
-A Full Stack Development project that helps students discover hackathons, internships, and job opportunities.
+A Full-Stack application designed to help students discover and track hackathons, internships, and job opportunities with AI-driven recommendations.
 
-## Tech Stack
+## 🚀 Tech Stack
 
 **Frontend:**
 - React.js
-- React Router
-- Axios
-- Tailwind CSS
-- Chart.js
+- React Router (Navigation)
+- Axios (API Communication)
+- Vanilla CSS & Tailwind CSS
+- Chart.js (Analytics Visualization)
 
 **Backend:**
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
-- JWT Authentication
-- bcrypt
+- Java Spring Boot (v3.1.5)
+- Spring Data JPA
+- PostgreSQL (Database)
+- Spring Security & JWT (Authentication)
+- Lombok
 
-## Features
+## ✨ Key Features
 
-### Student Features
-- Browse and search opportunities
-- Filter by type, location, and domain
-- Bookmark opportunities
-- View skill-based recommendations
-- Track deadlines
-- Update profile
+### 🎓 Student Features
+- **Personalized Recommendations**: Opportunities suggested based on your specific skills and interests provided during registration.
+- **Application Tracker**: Monitor your progress (Applied, Interviewing, Offered, Rejected) for every opportunity.
+- **Bookmark System**: Save interesting opportunities to your favorites for later.
+- **Deadline Management**: Visual indicators for upcoming opportunity deadlines.
+- **Interactive Profile**: Manage your skills, interests, and profile picture.
 
-### Admin Features
-- Add new opportunities
-- Edit existing opportunities
-- Delete opportunities
-- View platform statistics
-- Dashboard with charts
+### 🛡️ Admin Features
+- **Centralized Dashboard**: High-level statistics on platform growth and opportunity distribution.
+- **CRUD Management**: Full control to Add, Edit, and Delete opportunities.
+- **Analytics Visualization**: Interactive charts for monitoring student engagement and opportunity types.
+- **Profile Settings**: Manage administrative account details.
 
-## Setup Instructions
+## 🛠️ Setup Instructions
 
 ### Prerequisites
-- Node.js (v14 or higher)
-- MongoDB (running locally or MongoDB Atlas)
+- Node.js (v18 or higher)
+- Java 17 or higher
+- PostgreSQL (v14 or higher)
+- Maven (for dependency management)
 
-### Backend Setup
+### Backend Setup (Spring Boot)
+1. Navigate to the server directory:
+   ```bash
+   cd server_java
+   ```
+2. Configure your database in `src/main/resources/application.properties`:
+   ```properties
+   spring.datasource.url=jdbc:postgresql://localhost:5432/aspirepath
+   spring.datasource.username=your_username
+   spring.datasource.password=your_password
+   ```
+3. Run the application:
+   ```bash
+   mvn spring-boot:run
+   ```
+   The backend will start on **http://localhost:5001**.
 
-1. Navigate to server directory:
-```bash
-cd server
-```
-
+### Frontend Setup (React)
+1. Navigate to the client directory:
+   ```bash
+   cd client
+   ```
 2. Install dependencies:
-```bash
-npm install
-```
-
-3. Configure environment variables in `.env`:
-```
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/aspirepath
-JWT_SECRET=aspirepath_secret_key_2024
-ADMIN_EMAIL=admin@aspirepath.com
-ADMIN_PASSWORD=admin123
-```
-
-4. Start MongoDB (if running locally):
-```bash
-mongod
-```
-
-5. Start the server:
-```bash
-npm run dev
-```
-
-Server will run on http://localhost:5000
-
-### Frontend Setup
-
-1. Navigate to client directory:
-```bash
-cd client
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
+   ```bash
+   npm install
+   ```
 3. Start the development server:
-```bash
-npm run dev
-```
+   ```bash
+   npm run dev
+   ```
+   The frontend will start on **http://localhost:3000**.
 
-Frontend will run on http://localhost:3000
+## 🔑 Default Credentials
+- **Admin**: `priya@gmail.com` / `123456`
+- **Student**: `rithanya@gmail.com` / `654321`
 
-## Default Admin Credentials
-
-- Email: admin@aspirepath.com
-- Password: admin123
-
-## Project Structure
-
+## 📂 Project Structure
 ```
 AspirePath/
-├── client/                 # Frontend
+├── client/                # React Frontend
 │   ├── src/
-│   │   ├── components/    # Reusable components
+│   │   ├── components/    # Reusable UI elements
 │   │   ├── pages/         # Page components
-│   │   ├── services/      # API services
-│   │   ├── App.jsx        # Main app component
-│   │   └── main.jsx       # Entry point
-│   └── package.json
-│
-└── server/                # Backend
-    ├── models/            # Database models
-    ├── routes/            # API routes
-    ├── controllers/       # Route controllers
-    ├── middleware/        # Custom middleware
-    ├── config/            # Configuration files
-    ├── server.js          # Entry point
-    └── package.json
+│   │   ├── services/      # API services (axios)
+│   │   └── assets/        # Images and icons
+├── server_java/           # Spring Boot Backend
+│   ├── src/main/java/     # Java Source Code
+│   │   ├── controller/    # REST API endpoints
+│   │   ├── model/         # Database entities
+│   │   ├── repository/    # JPA repositories
+│   │   └── service/       # Business logic
+│   └── src/main/resources # Configuration and SQL seeds
 ```
 
-## API Endpoints
-
-### Authentication
-- POST /api/auth/register - Student registration
-- POST /api/auth/login - Student login
-- POST /api/auth/admin-login - Admin login
-- GET /api/auth/profile - Get student profile
-- PUT /api/auth/profile - Update student profile
-
-### Opportunities
-- GET /api/opportunities - Get all opportunities
-- GET /api/opportunities/:id - Get opportunity by ID
-- POST /api/opportunities - Create opportunity (Admin)
-- PUT /api/opportunities/:id - Update opportunity (Admin)
-- DELETE /api/opportunities/:id - Delete opportunity (Admin)
-- GET /api/opportunities/recommendations - Get recommendations
-- GET /api/opportunities/stats - Get statistics (Admin)
-
-### Bookmarks
-- POST /api/bookmarks - Add bookmark
-- GET /api/bookmarks - Get user bookmarks
-- DELETE /api/bookmarks/:id - Remove bookmark
-- GET /api/bookmarks/check/:opportunityId - Check if bookmarked
-
-## Routes
-
-### Public Routes
-- / - Landing page
-- /login - Student login
-- /register - Student registration
-- /admin-login - Admin login
-- /explore - Browse opportunities
-
-### Student Routes
-- /dashboard - Student dashboard
-- /opportunity/:id - Opportunity details
-- /bookmarks - Saved opportunities
-- /profile - Edit profile
-
-### Admin Routes
-- /admin/dashboard - Admin dashboard
-- /admin/add-opportunity - Add new opportunity
-- /admin/opportunity/edit/:id - Edit opportunity
-
-## Features Implemented
-
-1. **Authentication**: JWT-based authentication for students and admins
-2. **CRUD Operations**: Full CRUD for opportunities
-3. **Bookmarking**: Students can save opportunities
-4. **Filtering**: Search and filter opportunities
-5. **Recommendations**: Skill-based opportunity matching
-6. **Deadline Tracking**: Visual countdown for deadlines
-7. **Statistics**: Admin dashboard with charts
-8. **Responsive Design**: Mobile-friendly UI with Tailwind CSS
-
-## License
-
-This is a college project for educational purposes.
+## 📜 License
+This project is for educational purposes.
