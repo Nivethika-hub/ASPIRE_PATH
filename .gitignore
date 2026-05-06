@@ -1,0 +1,23 @@
+# Node
+client/node_modules/
+client/dist/
+client/.env
+node_modules/
+
+# Java
+server_java/target/
+server_java/.mvn/
+server_java/mvnw
+server_java/mvnw.cmd
+build/
+target/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
