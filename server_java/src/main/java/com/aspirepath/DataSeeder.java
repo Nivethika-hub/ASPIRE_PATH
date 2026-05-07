@@ -7,6 +7,7 @@ import com.aspirepath.repository.AdminRepository;
 import com.aspirepath.repository.OpportunityRepository;
 import com.aspirepath.repository.StudentRepository;
 import com.aspirepath.repository.BookmarkRepository;
+import com.aspirepath.repository.ApplicationRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -22,15 +23,17 @@ public class DataSeeder implements CommandLineRunner {
     private final StudentRepository studentRepository;
     private final OpportunityRepository opportunityRepository;
     private final BookmarkRepository bookmarkRepository;
+    private final ApplicationRepository applicationRepository;
     private final PasswordEncoder passwordEncoder;
 
     public DataSeeder(AdminRepository adminRepository, StudentRepository studentRepository,
                       OpportunityRepository opportunityRepository, BookmarkRepository bookmarkRepository,
-                      PasswordEncoder passwordEncoder) {
+                      ApplicationRepository applicationRepository, PasswordEncoder passwordEncoder) {
         this.adminRepository = adminRepository;
         this.studentRepository = studentRepository;
         this.opportunityRepository = opportunityRepository;
         this.bookmarkRepository = bookmarkRepository;
+        this.applicationRepository = applicationRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -67,6 +70,7 @@ public class DataSeeder implements CommandLineRunner {
 
     private void seedOpportunities() {
         System.out.println("🌱 Cleaning and re-seeding dummy opportunities...");
+        applicationRepository.deleteAll();
         bookmarkRepository.deleteAll();
         opportunityRepository.deleteAll();
         
